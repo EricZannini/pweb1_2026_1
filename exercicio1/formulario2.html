@@ -1,0 +1,54 @@
+<fieldset>
+<form></form>
+<legend><h4>Sistema de Gestão Acadêmica</h4></legend>
+
+<h4>Manutenção de Usuários do Sistema Interno</h4>
+<label for=login">Login:</label><br>
+<input type="text" id="login" name="login"><br>
+<label for=senha">Senha:</label><br>
+<input type="text" id="senha" name="senha">
+
+<h4>Status:</h4>
+<select name="status" id="status">
+<option value="ativo">ativo</option>
+<option value=inativo">inativo</option>
+</select>
+
+<h4>Tipo:</h4>
+<input type="radio" id="tecnico" name="tipo" value="Tecnico">
+<label for="tecnico">Técnico</label>
+<input type="radio" id="prof" name="tipo" value="Professor">
+<label for="prof">Professor</label>
+<input type="radio" id="aluno" name="tipo" value="Aluno">
+<label for="aluno">Aluno</label>
+
+<h4>Data Criação:</h4>
+<input type="date">
+
+<h4>Perfil:</h4>
+<input type="radio" id="convidado" name="tipoperfil" value="Convidado">
+<label for="convidado">Convidado</label>
+<input type="radio" id="prof" name="tipoperfil" value="Convidado">
+<label for="prof">Administador</label>
+
+<h4>Observações:</h4>
+<textarea id="obs" name="obs" rows="4" cols="50">
+</textarea>
+
+<h4>Módulos:</h4>
+<input type="checkbox" id="mod1" name="mod1" value="compras">
+<label for="mod1"> Compras</label>
+<input type="checkbox" id="mod2" name="mod2" value="biblioteca">
+<label for="mod2"> Biblioteca</label>
+<input type="checkbox" id="mod3" name="mod3" value="academico">
+<label for="mod3"> Acadêmico</label>
+<input type="checkbox" id="mod4" name="mod4" value="documentacao">
+<label for="mod4"> Documentação</label>
+<input type="checkbox" id="mod5" name="mod5" value="rh">
+<label for="mod5"> Recursos Humanos</label>
+
+<p></p>
+<button>Salvar</button>
+<button>Excluir</button>
+</fieldset>
+</form>

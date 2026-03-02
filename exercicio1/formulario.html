@@ -1,0 +1,50 @@
+<form action="/action_page.html">
+<fieldset>
+<legend><h4>Formulário Matrícula de Curso</h4></legend>
+
+<label for=“pnome">Primeiro nome:</label><br>
+<input type="text" id="pnome" name="pnome"><br>
+<label for=“snome">sobrenome:</label><br>
+<input type="text" id="unome" name="unome">
+
+<h4>Curso:</h4>
+<form>
+<input type="radio" id="TI" name="fav_language" value="HTML">
+<label for="TI">Técnico em Informática</label><br>
+<input type="radio" id="GADS" name="fav_language" value="CSS">
+<label for="GADS">Graduação - Análise e Desenvolvimento de Sistema</label><br>
+<input type="radio" id="PPW" name="fav_language" value="JavaScript">
+<label for="PPW">Profissionalizante - Programação Web</label>
+
+<h4>Linguagens de programação de sua preferência: </h4>
+<input type="checkbox" id="linguagem1" name="linguagem1" value="php">
+<label for="linguagem1"> PHP</label><br>
+<input type="checkbox" id="linguagem2" name="linguagem2" value="java">
+<label for="linguagem2"> Java</label><br>
+<input type="checkbox" id="linguagem3" name="linguagem3" value="python">
+<label for="linguagem3"> Python</label>
+
+<br>
+<p></p> 
+<label for="turno"><h4>Escolha um turno: </h4></label>
+<select name="turnos" id="turnos">
+<option value="manha">Manhã</option>
+<option value=“tarde">Tarde</option>
+<option value="noite">Noite</option>
+</select>
+
+<br>
+<label for="unidades"><h4> Escolha uma unidade mais próxima de você:</h4></label>
+<input list="unidades" name="unidades" id="unidades" placeholder="Chapecó">
+<datalist id="unidades">
+    <option value="Chapecó">
+    <option value="Xaxim">
+    <option value="Xanxerê">
+    <option value="Concórdia">
+</datalist>
+
+<br>
+<p></p>
+<button>Enviar</button>
+</fieldset>
+</form>
