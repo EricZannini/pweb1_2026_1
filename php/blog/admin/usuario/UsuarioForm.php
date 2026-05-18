@@ -27,9 +27,9 @@ if (!empty($_POST)) {
             redirect('./UsuarioList.php');
         }
     } catch (PDOException $e) {
-        $error = $e->getMessage();
+        $actionError = $e->getMessage();
     } catch (Exception $e) {
-        $error = $e->getMessage();
+        $actionError = $e->getMessage();
     }
 }
 
