@@ -20,11 +20,12 @@ if (!empty($_POST)) {
             $errors[] = "<li>O email é obrigatório</li>";
         }
 
+        if (empty($errors)) {
+            $db->store($_POST);
+            $success = "Registro Salvo com sucesso!";
 
-        $db->store($_POST);
-        $success = "Registro Salvo com sucesso!";
-
-        redirect('./UsuarioList.php');
+            redirect('./UsuarioList.php');
+        }
     } catch (PDOException $e) {
         $error = $e->getMessage();
     } catch (Exception $e) {
