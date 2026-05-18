@@ -13,8 +13,27 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
 </head>
+<?php
+
+function redirect($page, $time = 1500)
+{
+    echo "<script>
+                setTimeout(() => window.location.href = '$page', $time);
+          </script>";
+}
+
+function actionMessage($success = "", $error = "")
+{
+    if (!empty($success)) {
+        echo "<div class='alert alert-success' role='alert'><strong>$success</strong></div>";
+    }
+    if (!empty($error)) {
+        echo "<div class='alert alert-danger' role='alert'><strong>$error</strong></div>";
+    }
+}
+?>
+
 
 <body>
     <div class="container">
         <div class="row">
-
