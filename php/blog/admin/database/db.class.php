@@ -44,6 +44,18 @@ class db
         return $st->fetchAll(PDO::FETCH_CLASS);
     }
 
+    //SELECT * FROM tabela
+    public function find($id)
+    {
+        $sql = "SELECT * FROM $this->table_name WHERE id = ?";
+        $st = $this->conn->prepare($sql);
+        $st->execute([$id]);
+
+        return $st->fetchObject();
+    }
+
+
+
     //INSERT INTO tabela ('campo1', 'campo2') VALUES (?, ?);
     public function store($dados)
     {
@@ -68,6 +80,37 @@ class db
             $st->execute($vetorData);
         } catch (PDOException $e) {
             throw new Exception("Erro ao inserir: ", $e->getMessage());
+        }
+    }
+
+    //DELETE * FROM tabela WHERE id = ?
+    public function destroy($id)
+    {
+        try {
+
+            $sql = "DELETE FROM $this->table_name WHERE  id = ?;";
+            $st = $this->conn->prepare($sql);
+            $st->execute([$id]);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao deletar: " . $e->getMessage());
+        }
+    }
+
+    //SELECT * FROM tabela WHERE campo like '%valor%'
+    public function search($dados)
+    {
+        $campo = $dados['tipo'];
+        $valor = $dados['valor'];
+
+        $sql = "SELECT * FROM $this->table_name WHERE $campo LIKE ? ";
+
+        try {
+            $st = $this->conn->prepare($sql);
+            $st->execute(["%$valor%"]);
+
+            return $st->fetchAll(PDO::FETCH_CLASS);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao deletar: " . $e->getMessage());
         }
     }
 }
