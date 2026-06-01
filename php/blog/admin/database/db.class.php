@@ -55,6 +55,15 @@ class db
     }
 
 
+    //SELECT * FROM tabela WHERE campo = valor
+    public function findBy($campo, $valor)
+    {
+        $sql = "SELECT * FROM $this->table_name WHERE $campo = ?";
+        $st = $this->conn->prepare($sql);
+        $st->execute([$valor]);
+
+        return $st->fetchObject();
+    }
 
     //INSERT INTO tabela ('campo1', 'campo2') VALUES (?, ?);
     public function store($dados)
@@ -73,8 +82,8 @@ class db
         $sql = "INSERT INTO $this->table_name ($campos) VALUES ($marcadores);";
 
         //codigo para debugar algum erro
-        // var_dump($sql, $dados);
-        // exit;
+        //var_dump($sql, $dados);
+        //exit;
         try {
             $st = $this->conn->prepare($sql);
             $st->execute($vetorData);
@@ -82,6 +91,34 @@ class db
             throw new Exception("Erro ao inserir: ", $e->getMessage());
         }
     }
+
+    //UPDATE tabela SET 'campo1' = ?;
+    public function update($dados)
+    {
+        $campos = "";
+        $vetorData = [];
+        $sep = "";
+
+        foreach ($dados as $campo => $valor) {
+            if ($campo !== 'id') {
+                $campos .= $sep . " $campo = ?";
+                $vetorData[] = $valor;
+                $sep = ", ";
+            }
+        }
+        $vetorData[] = $dados['id'];
+        $sql = "UPDATE $this->table_name SET $campos WHERE id = ?;";
+
+        //  var_dump($vetorData, $sql);
+        //exit;
+        try {
+            $st = $this->conn->prepare($sql);
+            $st->execute($vetorData);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao atualizar: ", $e->getMessage());
+        }
+    }
+
 
     //DELETE * FROM tabela WHERE id = ?
     public function destroy($id)

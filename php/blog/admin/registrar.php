@@ -1,16 +1,12 @@
 <?php
-include '../header.php';
-include '../autenticacao.php';
-include_once "../database/db.class.php";
+include './header.php';
+include_once "./database/db.class.php";
 
 $db = new db('usuario');
 $success = '';
 $actionError = '';
 $errors = [];
-
-if (!empty($_GET['id'])) {
-    $data = $db->find($_GET['id']);
-}
+$data = '';
 
 if (!empty($_POST)) {
 
@@ -27,16 +23,27 @@ if (!empty($_POST)) {
             $errors[] = "<li>O email é obrigatório</li>";
         }
 
-        if (empty($errors)) {
-            if (empty($_POST['id'])) {
-                $db->store($_POST);
-                $success = "Registro Salvo com sucesso!";
-            } else {
-                $db->update($_POST);
-                $success = "Registro Atualizado com sucesso!";
-            }
+        if (empty($_POST['senha'])) {
+            $errors[] = "<li>A senha é obrigatório</li>";
 
-            redirect('./UsuarioList.php');
+            if (strlen($_POST['senha'] < 3)) {
+                $errors[] = "<li>A senha deve ter no minimo 3 caracteres</li>";
+            }
+        }
+
+        if (empty($errors)) {
+
+            $dado = [
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
+                'telefone' => $_POST['telefone'] ? $_POST['telefone'] : "",
+                'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
+            ];
+
+            $db->store($dado);
+            $success = "Usuário cadastrado com sucesso! Redirecionando para o login...";
+
+            redirect('./login.php');
         }
     } catch (PDOException $e) {
         $actionError = $e->getMessage();
@@ -51,9 +58,8 @@ if (!empty($_POST)) {
     <?php actionMessage($success, $actionError) ?>
     <?php showValidationError($errors) ?>
 
-    <form action="UsuarioForm.php" method="post">
-        <h3>Formulário Usuário</h3>
-        <input type="hidden" name="id" value="<?php echo getFormValue($data, 'id'); ?>">
+    <form action="registrar.php" method="post">
+        <h3>Registrar Usuário</h3>
         <div class="col-6">
             <label for="nome">Nome</label>
             <input type="text" name="nome" class="form-control" value="<?php echo getFormValue($data, 'nome'); ?>">
@@ -66,9 +72,13 @@ if (!empty($_POST)) {
             <label for="telefone">Telefone</label>
             <input type="text" name="telefone" class="form-control" value="<?php echo getFormValue($data, 'telefone'); ?>">
         </div>
+        <div class="col-6">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" class="form-control" value="<?php echo getFormValue($data, 'senha'); ?>">
+        </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-success">Salvar</button>
-            <a href="./UsuarioList.php" class="btn btn-primary"> Voltar</a>
+            Já tem uma conta? <a href="./login.php" class="btn btn-primary"> Faça login aqui</a>
         </div>
 
 
@@ -77,5 +87,5 @@ if (!empty($_POST)) {
 </div>
 
 <?php
-include '../footer.php';
+include './footer.php';
 ?>
