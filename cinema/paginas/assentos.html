@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-br" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seleção de Assentos - Cinema</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style> 
+      body {
+        /* Ajustado para buscar a imagem de fundo saindo de paginas */
+        background-image: url('../img/background_cinema_blur.png');
+        background-size: cover;        
+        background-position: center;   
+        background-attachment: fixed;  
+      }
+
+      .glass-effect {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 32px; 
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        padding: 20px;
+        margin-top: 20px; 
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div class="container">
+        <header class="blog-header glass-effect mb-4">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-12 text-center">
+                    <a class="link-secondary text-white text-decoration-none fs-4 fw-bold" href="../index.html">
+                        <i class="fa-solid fa-arrow-left me-2"></i> Voltar para o Início
+                    </a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="container pb-5">
+      <div class="card glass-effect p-4 p-md-5 text-center">
+        <h3 class="text-white mb-4">Selecione seus Assentos</h3>
+
+        <a class="btn glass-effect text-white mb-5">TELA DO CINEMA</a>
+
+<div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+          <span class="text-white fw-bold me-2 me-md-4 fs-5">A</span>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="A1"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="A2"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="A3"><i class="fa-solid fa-couch"></i></button>
+          <div class="mx-2 mx-md-4"></div> <button type="button" class="btn glass-effect text-secondary btn-assento" id="A4" disabled><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="A5"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="A6"><i class="fa-solid fa-couch"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+          <span class="text-white fw-bold me-2 me-md-4 fs-5">B</span>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="B1"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="B2"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="B3"><i class="fa-solid fa-couch"></i></button>
+          <div class="mx-2 mx-md-4"></div> <button type="button" class="btn glass-effect text-white btn-assento" id="B4"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="B5"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="B6"><i class="fa-solid fa-couch"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+          <span class="text-white fw-bold me-2 me-md-4 fs-5">C</span>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="C1"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-secondary btn-assento" id="C2" disabled><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="C3"><i class="fa-solid fa-couch"></i></button>
+          <div class="mx-2 mx-md-4"></div> <button type="button" class="btn glass-effect text-white btn-assento" id="C4"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="C5"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-secondary btn-assento" id="C6" disabled><i class="fa-solid fa-couch"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+          <span class="text-white fw-bold me-2 me-md-4 fs-5">D</span>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="D1"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="D2"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="D3"><i class="fa-solid fa-couch"></i></button>
+          <div class="mx-2 mx-md-4"></div> <button type="button" class="btn glass-effect text-white btn-assento" id="D4"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="D5"><i class="fa-solid fa-couch"></i></button>
+          <button type="button" class="btn glass-effect text-white btn-assento" id="D6"><i class="fa-solid fa-couch"></i></button>
+        </div>
+
+        <div class="mt-5 border-top border-secondary pt-4">
+            <a href="pagamento.html" class="btn glass-effect text-white fs-5 px-5">Ir para o Pagamento <i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+<script>
+      const assentos = document.querySelectorAll('.btn-assento:not([disabled])');
+
+      assentos.forEach(assento => {
+        assento.addEventListener('click', function() {
+
+          if (this.classList.contains('text-white')) {
+            this.classList.remove('text-white');
+            this.classList.add('text-warning');
+          } else {
+            this.classList.remove('text-warning');
+            this.classList.add('text-white');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

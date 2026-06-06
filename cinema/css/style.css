@@ -1,0 +1,49 @@
+/*Background e Efeito de vidro:*/
+/*fonte do efeito: https://br.pinterest.com/pin/854206254369716431/ */
+    
+  body {
+    background-image: url('../img/background_cinema_blur.png');
+    background-size: cover;        
+    background-position: center;   
+    background-attachment: fixed;  
+  }
+
+/*Efeito de Vidro*/
+  .glass-effect {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 32px; 
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 20px;
+    margin-top: 20px; 
+  }
+
+  /*Botão transparente*/
+.btn-imagem {
+    background: transparent; 
+    border: none;           
+    padding: 0;              
+    box-shadow: none;        
+}
+
+/*Arredondamento*/
+  .arredondado{
+    border-radius: 32px;
+  }
+
+/*Botões com Dropdown*/
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.1) ; 
+    border-radius: 8px; 
+}
+
+/*Zoom na Imagem*/
+img {
+    transition: transform 0.3s;
+}
+img:hover {
+    transform: scale(1.05);
+}
