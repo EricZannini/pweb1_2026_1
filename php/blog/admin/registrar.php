@@ -8,31 +8,42 @@ $actionError = '';
 $errors = [];
 $data = '';
 
-if (!empty($_GET['id'])) {
-    $data = $db->find($_GET['id']);
-}
-
 if (!empty($_POST)) {
+
     $data = (object) $_POST;
+    // var_dump($_POST);
+    //exit;
     try {
-        if (empty($_POST['nome']))  $errors[] = "<li>O nome é obrigatório</li>";
-        if (empty($_POST['email'])) $errors[] = "<li>O email é obrigatório</li>";
+
+        if (empty($_POST['nome'])) {
+            $errors[] = "<li>O nome é obrigatório</li>";
+        }
+
+        if (empty($_POST['email'])) {
+            $errors[] = "<li>O email é obrigatório</li>";
+        }
+
         if (empty($_POST['senha'])) {
-            $errors[] = "<li>A senha é obrigatória</li>";
-        } elseif (strlen($_POST['senha']) < 3) {
-            $errors[] = "<li>A senha precisa ter ao menos 3 caracteres</li>";
+            $errors[] = "<li>A senha é obrigatório</li>";
+
+            if (strlen($_POST['senha'] < 3)) {
+                $errors[] = "<li>A senha deve ter no minimo 3 caracteres</li>";
+            }
         }
 
         if (empty($errors)) {
+
             $dado = [
-                'nome'     => $_POST['nome'],
-                'email'    => $_POST['email'],
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
                 'telefone' => $_POST['telefone'] ? $_POST['telefone'] : "",
-                'senha'    => password_hash($_POST['senha'], PASSWORD_DEFAULT),
+                'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
             ];
+
             $db->store($dado);
-            $success = "Usuário registrado com sucesso!";
-            redirect('./UsuarioList.php');
+            $success = "Usuário cadastrado com sucesso! Redirecionando para o login...";
+
+            redirect('./login.php');
         }
     } catch (PDOException $e) {
         $actionError = $e->getMessage();
@@ -40,6 +51,7 @@ if (!empty($_POST)) {
         $actionError = $e->getMessage();
     }
 }
+
 ?>
 
 <div class="row">
@@ -66,10 +78,14 @@ if (!empty($_POST)) {
         </div>
         <div class="mt-2">
             <button type="submit" class="btn btn-success">Salvar</button>
-            já tem uma conta
-            <a href="./login.php" class="btn btn-primary">faça login aqui</a>
+            Já tem uma conta? <a href="./login.php" class="btn btn-primary"> Faça login aqui</a>
         </div>
+
+
     </form>
+
 </div>
 
-<?php include './footer.php'; ?>
+<?php
+include './footer.php';
+?>
